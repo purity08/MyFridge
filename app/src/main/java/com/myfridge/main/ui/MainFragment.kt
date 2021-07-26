@@ -14,13 +14,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private val viewModel: MainViewModel = TODO()
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        //viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
     }
 }
