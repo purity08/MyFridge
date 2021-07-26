@@ -1,19 +1,20 @@
 package com.myfridge.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.myfridge.R
-import com.myfridge.main.ui.MainFragment
+import kotlinx.android.synthetic.main.main_activity.*
 
-class MainActivity : AppCompatActivity(R.layout.main_activity) {
+class MainActivity: AppCompatActivity(R.layout.main_activity) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (savedInstanceState == null) {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
-                .commitNow()
-        }
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        bottom_navigation.setupWithNavController(navController)
+
     }
 }
