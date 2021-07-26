@@ -1,4 +1,4 @@
-package com.example.myfridge.ui.main
+package com.myfridge.main.viewModel
 
 import androidx.lifecycle.ViewModel
 
