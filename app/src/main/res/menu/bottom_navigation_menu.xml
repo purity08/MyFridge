@@ -16,5 +16,4 @@
         android:icon="@drawable/ic_fridge"
         android:title="@string/fridge" />
 
-
 </menu>
