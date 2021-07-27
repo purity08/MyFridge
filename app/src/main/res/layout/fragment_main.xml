@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.myfridge.main.ui.MainFragment">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="@string/home_for_navigation" />
+        android:text="@string/home_for_navigation"
+        />
 
 </LinearLayout>

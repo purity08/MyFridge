@@ -1,8 +1,9 @@
-package com.myfridge
+package com.myfridge.main.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import com.myfridge.R
 
 
 class FridgeFragment : Fragment(R.layout.fragment_fridge) {

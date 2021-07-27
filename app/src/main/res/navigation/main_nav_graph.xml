@@ -18,6 +18,6 @@
     </fragment>
     <fragment
         android:id="@+id/fridgeFragment"
-        android:name="com.myfridge.FridgeFragment"
+        android:name="com.myfridge.main.ui.FridgeFragment"
         tools:layout="@layout/fragment_fridge" />
 </navigation>

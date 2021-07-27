@@ -12,9 +12,12 @@ class MainActivity: AppCompatActivity(R.layout.main_activity) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setupBottomNavigation()
+    }
+
+    private fun setupBottomNavigation() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         bottom_navigation.setupWithNavController(navController)
-
     }
 }
