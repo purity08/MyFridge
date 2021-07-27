@@ -3,8 +3,6 @@
     <string name="my_fridge">MyFridge</string>
     <string name="fridge">Fridge</string>
     <string name="home">Home</string>
+    <string name="recipes">Recipes</string>
 
-    <!-- navigation -->
-    <string name="home_for_navigation">Home</string>
-    <string name="fridge_for_navigation">Fridge</string>
 </resources>

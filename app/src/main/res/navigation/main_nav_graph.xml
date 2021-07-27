@@ -15,9 +15,17 @@
             app:destination="@id/fridgeFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_mainFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
     </fragment>
     <fragment
         android:id="@+id/fridgeFragment"
         android:name="com.myfridge.main.ui.FridgeFragment"
         tools:layout="@layout/fragment_fridge" />
+    <fragment
+        android:id="@+id/recipesFragment"
+        android:name="com.myfridge.RecipesFragment"
+        android:label="fragment_recipes"
+        tools:layout="@layout/fragment_recipes" />
 </navigation>
