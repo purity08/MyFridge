@@ -1,4 +1,4 @@
-package com.myfridge.main
+package com.myfridge
 
 import android.app.Application
 

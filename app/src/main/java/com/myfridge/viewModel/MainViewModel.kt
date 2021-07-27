@@ -1,4 +1,4 @@
-package com.myfridge.main.viewModel
+package com.myfridge.viewModel
 
 import androidx.lifecycle.ViewModel
 

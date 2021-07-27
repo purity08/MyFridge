@@ -4,13 +4,13 @@
     android:id="@+id/fridge_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.ui.FridgeFragment">
+    tools:context=".ui.StatisticsFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="@string/fridge"
+        android:text="@string/statistics"
         android:textColor="@color/white" />
 
 </LinearLayout>

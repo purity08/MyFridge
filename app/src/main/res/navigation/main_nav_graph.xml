@@ -7,25 +7,33 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.myfridge.main.ui.MainFragment"
+        android:name="com.myfridge.ui.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_fridge"
-            app:destination="@id/fridgeFragment"
+            app:destination="@id/statisticsFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
         <action
             android:id="@+id/action_mainFragment_to_recipesFragment"
             app:destination="@id/recipesFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_checkList"
+            app:destination="@id/checkListFragment" />
     </fragment>
     <fragment
-        android:id="@+id/fridgeFragment"
-        android:name="com.myfridge.main.ui.FridgeFragment"
-        tools:layout="@layout/fragment_fridge" />
+        android:id="@+id/statisticsFragment"
+        android:name="com.myfridge.ui.StatisticsFragment"
+        tools:layout="@layout/fragment_statistics" />
     <fragment
         android:id="@+id/recipesFragment"
-        android:name="com.myfridge.RecipesFragment"
+        android:name="com.myfridge.ui.RecipesFragment"
         android:label="fragment_recipes"
         tools:layout="@layout/fragment_recipes" />
+    <fragment
+        android:id="@+id/checkListFragment"
+        android:name="com.myfridge.ui.CheckListFragment"
+        android:label="fragment_check_list"
+        tools:layout="@layout/fragment_check_list" />
 </navigation>

@@ -1,16 +1,14 @@
-package com.myfridge.main.ui
+package com.myfridge.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.myfridge.R
 
-
-class FridgeFragment : Fragment(R.layout.fragment_fridge) {
+class MainFragment : Fragment(R.layout.fragment_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
     }
-
 }

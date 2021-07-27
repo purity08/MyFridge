@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.RecipesFragment">
+    tools:context=".ui.CheckListFragment">
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/recipes"
         android:gravity="center"
-        />
+        android:text="@string/check_list" />
+
 </LinearLayout>
