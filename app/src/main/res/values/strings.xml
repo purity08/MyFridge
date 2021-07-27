@@ -1,6 +1,8 @@
 <resources>
     <!-- trash -->
     <string name="my_fridge">MyFridge</string>
+
+    <!-- Navigation -->
     <string name="fridge">Fridge</string>
     <string name="home">Home</string>
     <string name="recipes">Recipes</string>

@@ -24,17 +24,19 @@
         tools:replace="android:allowBackup"
         android:theme="@style/Theme.MaterialComponents.NoActionBar">
 
-        <activity android:name="com.myfridge.ui.main.MainActivity">
+        <activity android:name=".StartActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/StartTheme"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".registration.RegistrationActivity">
+        <activity android:name="com.myfridge.ui.main.MainActivity" />
 
-        </activity>
+        <activity android:name=".registration.RegistrationActivity" />
     </application>
 
 </manifest>
