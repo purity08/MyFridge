@@ -1,4 +1,4 @@
-package com.myfridge
+package com.myfridge.util
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -7,8 +7,8 @@ object UserSettings {
 
     private const val SHARED_PREFS_FILE_NAME = "UserSettings"
     private const val keyRegUser = "keyRegUser"
-    private const val keyUserPhone = "keyUserPhone"
     private const val keyFirstLogin = "keyFirstLogin"
+    private const val keyFirstGoogleLogin = "keyFirstGoogleLogin"
 
     fun saveRegUser(context: Context, value: Boolean) {
         getPrefs(context).edit().putBoolean(keyRegUser, value).apply()
@@ -19,19 +19,20 @@ object UserSettings {
     }
 
     fun saveFirstLogin(context: Context, value: Boolean) {
-        getPrefs(context).edit().putBoolean(keyFirstLogin, value).apply()
+        getPrefs(context).edit().clear().putBoolean(keyFirstLogin, value).apply()
     }
+
 
     fun getFirstLogin(context: Context): Boolean {
         return getPrefs(context).getBoolean(keyFirstLogin, true)
     }
 
-    fun saveUserPhone(context: Context, value: String) {
-        getPrefs(context).edit().putString(keyUserPhone, value).apply()
+    fun saveFirstGoogleLogin(context: Context, value: Boolean) {
+        getPrefs(context).edit().clear().putBoolean(keyFirstGoogleLogin, value).apply()
     }
 
-    fun getUserPhone(context: Context): String? {
-        return getPrefs(context).getString(keyUserPhone,"")
+    fun getFirstGoogleLogin(context: Context): Boolean {
+        return getPrefs(context).getBoolean(keyFirstGoogleLogin, true)
     }
 
 

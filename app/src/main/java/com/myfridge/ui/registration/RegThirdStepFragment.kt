@@ -20,6 +20,6 @@ class RegThirdStepFragment : Fragment(R.layout.fragment_reg_third_step) {
     }
 
     private fun navigateToMain() {
-        (activity as RegistrationActivity).goToMainActivity()
+        (activity as RegistrationActivity).navigateToMainActivity()
     }
 }

@@ -10,3 +10,4 @@
     app:defaultNavHost="true"
     app:navGraph="@navigation/reg_nav_graph"
     tools:context=".ui.registration.RegistrationActivity" />
+
