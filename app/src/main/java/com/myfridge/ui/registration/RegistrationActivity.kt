@@ -50,7 +50,7 @@ class RegistrationActivity: AppCompatActivity(R.layout.activity_registration) {
         super.onActivityResult(requestCode, resultCode, data)
 
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        Timber.d("request_code: $requestCode")
         if (requestCode == RC_SIGN_IN) {
             // The Task returned from this call is always completed, no need to attach
             // a listener.
@@ -74,6 +74,7 @@ class RegistrationActivity: AppCompatActivity(R.layout.activity_registration) {
             //updateUI(null)
         }
     }
+
     companion object {
         const val RC_SIGN_IN = 1
     }
