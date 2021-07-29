@@ -97,4 +97,10 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxjava:3.0.7'
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxkotlin:3.0.1'
+
+    //CountryCodePicker
+    implementation 'com.hbb20:ccp:2.5.3'
+
+    //google auth
+    implementation 'com.google.android.gms:play-services-auth:19.2.0'
 }

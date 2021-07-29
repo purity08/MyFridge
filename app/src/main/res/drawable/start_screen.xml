@@ -4,7 +4,7 @@
 
     <item>
         <bitmap
-            android:src="@drawable/logo_myfridge"
+            android:src="@drawable/logo_my_fridge"
             android:width="128dp"
             android:height="128dp"
             android:gravity="center"/>

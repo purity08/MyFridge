@@ -4,12 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.myfridge.ui.main.MainActivity
+import com.myfridge.ui.registration.RegistrationActivity
 
 class StartActivity : AppCompatActivity(R.layout.activity_start) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        navigateTo(MainActivity())
+        val activity: AppCompatActivity
+        activity = RegistrationActivity()
+
+        navigateTo(activity)
     }
 
     private fun navigateTo(activity: AppCompatActivity) {
