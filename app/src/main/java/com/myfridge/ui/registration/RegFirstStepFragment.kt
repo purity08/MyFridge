@@ -30,8 +30,7 @@ class RegFirstStepFragment : Fragment(R.layout.fragment_reg_first_step) {
 
             Timber.d("phoneNumber: $phoneNumber")
 
-            //PhoneAuth.startPhoneNumberVerification(phoneNumber, registrationActivity)
-            //registrationActivity.phoneVerification(phoneNumber)
+
             PhoneAuth.startPhoneVerification(registrationActivity, phoneNumber)
             navigateToSecondStep()
         }

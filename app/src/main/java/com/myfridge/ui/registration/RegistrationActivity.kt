@@ -22,7 +22,6 @@ class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         auth.useAppLanguage()
 
         buildGoogleSignIn()
@@ -32,7 +31,6 @@ class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
-
 
     /**
      *
@@ -45,9 +43,7 @@ class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-
     private fun buildGoogleSignIn() {
-
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -66,7 +62,7 @@ class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)!!
-                firebaseAuthWithGoogle(account.idToken!!)
+                firebaseGoogleAuth(account.idToken!!)
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
                 Timber.d("Google sign in failed $e")
@@ -74,7 +70,7 @@ class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
         }
     }
 
-    private fun firebaseAuthWithGoogle(idToken: String) {
+    private fun firebaseGoogleAuth(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
