@@ -19,7 +19,6 @@ class StartActivity : AppCompatActivity(R.layout.activity_start) {
             } else {
                 RegistrationActivity()
             }
-
         navigateTo(activity)
     }
 

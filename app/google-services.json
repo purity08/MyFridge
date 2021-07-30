@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "165500845166-9n6b02p6d126i593f8iku3rgdgcuqmp8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myfridge.dev",
+            "certificate_hash": "58303a79b0ec317b46af93b70cefd40f4f370418"
+          }
+        },
+        {
           "client_id": "165500845166-cmtqfhefot92ev4c12jv8n3roedvvifg.apps.googleusercontent.com",
           "client_type": 3
         }
