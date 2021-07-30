@@ -15,10 +15,12 @@ import com.myfridge.auth.FirebaseInstance.auth
 import com.myfridge.util.UserSettings
 
 
-
 class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
 
     private lateinit var mGoogleSignInClient: GoogleSignInClient
+
+    var regFirstStepFragment: RegFirstStepFragment? = null
+    var regSecondStepFragment: RegSecondStepFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

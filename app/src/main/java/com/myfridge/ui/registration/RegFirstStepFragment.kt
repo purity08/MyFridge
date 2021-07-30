@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.myfridge.R
 import com.myfridge.auth.PhoneAuth
+import com.myfridge.util.Utils.hideKeyboard
 import kotlinx.android.synthetic.main.fragment_reg_first_step.*
 import timber.log.Timber
 
@@ -23,6 +24,7 @@ class RegFirstStepFragment : Fragment(R.layout.fragment_reg_first_step) {
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 
         registrationActivity = activity as RegistrationActivity
+        registrationActivity.regFirstStepFragment = this
 
         sendNumberButton.setOnClickListener {
             val phoneNumber = countryCodePicker.selectedCountryCodeWithPlus +
@@ -30,17 +32,17 @@ class RegFirstStepFragment : Fragment(R.layout.fragment_reg_first_step) {
 
             Timber.d("phoneNumber: $phoneNumber")
 
-
+            hideKeyboard()
             PhoneAuth.startPhoneVerification(registrationActivity, phoneNumber)
-            navigateToSecondStep()
         }
 
         googleSignButton.setOnClickListener {
             registrationActivity.signInWithGoogle()
         }
+
     }
 
-     private fun navigateToSecondStep() {
+      fun navigateToSecondStep() {
         findNavController().navigate(R.id.regSecondStepFragment)
     }
 }

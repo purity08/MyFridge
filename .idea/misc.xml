@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/MyFridge/app/src/main/res/layout/activity_main.xml" value="0.17831813576494426" />
+        <entry key="..\:/AndroidProjects/MyFridge/app/src/main/res/layout/activity_registration.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/MyFridge/app/src/main/res/layout/fragment_main.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/MyFridge/app/src/main/res/layout/fragment_reg_first_step.xml" value="0.17831813576494426" />
         <entry key="..\:/AndroidProjects/MyFridge/app/src/main/res/layout/fragment_reg_second_step.xml" value="0.17831813576494426" />
+        <entry key="..\:/AndroidProjects/MyFridge/app/src/main/res/layout/fragment_reg_third_step.xml" value="0.17831813576494426" />
       </map>
     </option>
   </component>
