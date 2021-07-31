@@ -1,6 +1,7 @@
 package com.myfridge.auth
 
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
 import com.google.android.material.progressindicator.CircularProgressIndicator
@@ -13,6 +14,8 @@ import com.myfridge.auth.FirebaseInstance.auth
 
 import com.myfridge.ui.registration.RegistrationActivity
 import com.myfridge.util.UserSettings
+import com.myfridge.util.Utils.hideProgressBar
+import com.myfridge.util.Utils.showProgressBar
 import kotlinx.android.synthetic.main.activity_registration.*
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
@@ -38,6 +41,8 @@ object PhoneAuth {
         override fun onVerificationFailed(e: FirebaseException) {
             Timber.w("onVerificationFailed $e")
 
+            hideProgressBar(activity as RegistrationActivity)
+            Toast.makeText(activity, e.localizedMessage, Toast.LENGTH_LONG).show()
             /*
             if (e is FirebaseAuthInvalidCredentialsException) {
 
@@ -60,13 +65,11 @@ object PhoneAuth {
             this@PhoneAuth.verificationId = verificationId
             resendToken = token
 
-
-
             //Navigate to the step 2
             (activity as RegistrationActivity).regFirstStepFragment!!.navigateToSecondStep()
 
-            //hide progress bar, visible the next fragment
-            hideProgressBar()
+            //hide progress bar, show the next fragment
+            hideProgressBar(activity as RegistrationActivity)
         }
     }
 
@@ -77,17 +80,16 @@ object PhoneAuth {
             .setActivity(activity)                 // Activity (for callback binding)
             .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
             .build()
-
         this.activity = activity
 
         //show circular progress bar while auth
-        showProgressBar()
+        showProgressBar(activity as RegistrationActivity)
 
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
     fun verifyPhoneNumberWithCode(code: String) {
-        showProgressBar(text = "Verifying..")
+        showProgressBar(activity as RegistrationActivity, text = "Verifying..")
 
         val credential = PhoneAuthProvider.getCredential(verificationId, code)
         signInWithPhoneAuthCredential(credential)
@@ -106,11 +108,15 @@ object PhoneAuth {
 
                     //navigate to step 3
                     (activity as RegistrationActivity).regSecondStepFragment!!.navigateToThirdStep()
-                    hideProgressBar()
+                    hideProgressBar(activity as RegistrationActivity)
 
                 } else {
                     // Sign in failed, display a message and update the UI
                     Timber.w("signInWithCredential:failure ${task.exception}")
+
+                    hideProgressBar(activity as RegistrationActivity)
+
+                    Toast.makeText(activity, "wrong code", Toast.LENGTH_LONG).show()
 //                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
 //                        // The verification code entered was invalid
 //                    }
@@ -118,18 +124,5 @@ object PhoneAuth {
                 }
             }
     }
-    private fun showProgressBar(text: String = "") {
-        activity.progress_circular.visibility = View.VISIBLE
-        activity.progress_textView.visibility = View.VISIBLE
-        if (text != "") {
-            activity.progress_textView.text = text
-        }
 
-        activity.reg_nav_host_fragment.visibility = View.INVISIBLE
-    }
-    private fun hideProgressBar() {
-        activity.progress_circular.visibility = View.GONE
-        activity.progress_textView.visibility = View.GONE
-        activity.reg_nav_host_fragment.visibility = View.VISIBLE
-    }
 }
