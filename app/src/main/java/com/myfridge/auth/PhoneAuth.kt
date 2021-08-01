@@ -1,17 +1,12 @@
 package com.myfridge.auth
 
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentContainerView
-import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
-import com.myfridge.R
 import com.myfridge.auth.FirebaseInstance.auth
-
 import com.myfridge.ui.registration.RegistrationActivity
 import com.myfridge.util.UserSettings
 import com.myfridge.util.Utils.hideProgressBar
@@ -75,7 +70,7 @@ object PhoneAuth {
 
     fun startPhoneVerification(activity: AppCompatActivity, phoneNumber: String) {
         val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber(phoneNumber)       // Phone number to verify
+            .setPhoneNumber(phoneNumber) // Phone number to verify
             .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
             .setActivity(activity)                 // Activity (for callback binding)
             .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
@@ -96,7 +91,6 @@ object PhoneAuth {
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
-
         auth.signInWithCredential(credential)
             .addOnCompleteListener(activity) { task ->
                 if (task.isSuccessful) {
@@ -104,7 +98,7 @@ object PhoneAuth {
                     Timber.d("signInWithCredential:success")
 
                     //save first Login
-                    UserSettings.saveFirstLogin(activity, false)
+                    UserSettings.saveFirstLogin(activity, value = true)
 
                     //navigate to step 3
                     (activity as RegistrationActivity).regSecondStepFragment!!.navigateToThirdStep()

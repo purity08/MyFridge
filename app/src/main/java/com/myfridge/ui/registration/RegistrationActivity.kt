@@ -2,17 +2,22 @@ package com.myfridge.ui.registration
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.*
+import com.google.gson.Gson
 import com.myfridge.R
 import com.myfridge.ui.main.MainActivity
 import timber.log.Timber
 import com.myfridge.auth.FirebaseInstance.auth
+import com.myfridge.storage.entity.Account
 import com.myfridge.util.UserSettings
+import com.myfridge.viewModel.AddAccountViewModel
 
 
 class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
@@ -22,6 +27,8 @@ class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
     var regFirstStepFragment: RegFirstStepFragment? = null
     var regSecondStepFragment: RegSecondStepFragment? = null
 
+    private val addAccountViewModel: AddAccountViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth.useAppLanguage()
@@ -29,10 +36,12 @@ class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
         buildGoogleSignIn()
     }
 
-    fun navigateToMainActivity() {
-        startActivity(Intent(this, MainActivity::class.java))
+     fun navigateToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
         finish()
     }
+
 
     /**
      *
@@ -77,7 +86,21 @@ class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    UserSettings.saveFirstGoogleLogin(this, false)
+                    UserSettings.saveFirstGoogleLogin(this, value = true)
+
+                    val user = auth.currentUser
+                    val account = Account(
+                        user!!.uid,
+                        user.displayName,
+                        lastName = "",
+                        user.email,
+                        user.phoneNumber,
+                        user.photoUrl.toString()
+                    )
+                    account.isGoogleAccount = true
+
+                    addAccountViewModel.insert(account)
+
                     navigateToMainActivity()
                 } else {
                     // If sign in fails, display a message to the user.

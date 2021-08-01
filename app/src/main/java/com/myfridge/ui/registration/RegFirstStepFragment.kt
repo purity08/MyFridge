@@ -20,7 +20,8 @@ class RegFirstStepFragment : Fragment(R.layout.fragment_reg_first_step) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val inputMethodManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val inputMethodManager =
+            context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 
         registrationActivity = activity as RegistrationActivity
@@ -42,7 +43,7 @@ class RegFirstStepFragment : Fragment(R.layout.fragment_reg_first_step) {
 
     }
 
-      fun navigateToSecondStep() {
+    fun navigateToSecondStep() {
         findNavController().navigate(R.id.regSecondStepFragment)
     }
 }

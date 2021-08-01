@@ -12,8 +12,8 @@ class StartActivity : AppCompatActivity(R.layout.activity_start) {
         super.onCreate(savedInstanceState)
 
         val activity: AppCompatActivity =
-            if ((!UserSettings.getFirstLogin(this)) ||
-                (!UserSettings.getFirstGoogleLogin(this))
+            if ((UserSettings.getFirstLogin(this)) ||
+                (UserSettings.getFirstGoogleLogin(this))
             ) {
                 MainActivity()
             } else {

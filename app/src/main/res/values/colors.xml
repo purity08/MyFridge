@@ -10,4 +10,5 @@
     <color name="red">#AD000B</color>
     <color name="light_grey">#BFCCD4</color>
     <color name="light_blue">#3D93FA</color>
+    <color name="transparent">#00000000</color>
 </resources>
