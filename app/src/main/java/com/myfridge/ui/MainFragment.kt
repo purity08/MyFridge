@@ -1,20 +1,19 @@
 package com.myfridge.ui
 
-import android.content.Intent
+
+
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.viewModelScope
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.myfridge.R
-import com.myfridge.auth.FirebaseInstance.auth
 import com.myfridge.ui.main.MainActivity
-import com.myfridge.ui.registration.RegistrationActivity
+import com.myfridge.util.DownloadImage
 import com.myfridge.util.UserSettings
 import com.myfridge.viewModel.MainActivityViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
+import java.io.File
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
@@ -26,9 +25,14 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         mainActivity = activity as MainActivity
 
         mainActivityViewModel.account.observe(viewLifecycleOwner, { account ->
-            //account.photoUrl = "qwe"
+
+            if (UserSettings.getFirstGoogleLogin(requireContext()) && UserSettings.getFirstStart(requireContext())) {
+                val path = DownloadImage(account.imagePath, requireContext()).execute("").get()
+                account.imagePath = path.toString()
+            }
+            
+            profile_photo.setImageURI(Uri.fromFile(File(account.imagePath)))
             mainTextView.setText(account.toString())
-            //TODO add photo to imageView
         })
 
         profileButton.setOnClickListener {

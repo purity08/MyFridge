@@ -12,7 +12,7 @@ data class Account(
     val lastName: String = "",
     val email: String? = "",
     val phoneNumber: String? = "",
-    var photoUrl: String = ""
+    var imagePath: String = ""
 ): Serializable {
     var isGoogleAccount = false
 }

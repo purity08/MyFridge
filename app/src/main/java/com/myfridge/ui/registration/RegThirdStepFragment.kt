@@ -51,6 +51,7 @@ class RegThirdStepFragment : Fragment(R.layout.fragment_reg_third_step) {
                 val account = assembleAccount(firstName, lastName, email, photo)
                 addAccountViewModel.insert(account)
 
+                UserSettings.saveFirstStart(requireContext(), true)
                 navigateToMain()
             } else {
                 Toast.makeText(requireContext(), "Fill in all the fields!", Toast.LENGTH_SHORT)
@@ -74,7 +75,7 @@ class RegThirdStepFragment : Fragment(R.layout.fragment_reg_third_step) {
             lastName = lastName,
             email = email,
             phoneNumber = auth.currentUser!!.phoneNumber,
-            photoUrl = filePath
+            imagePath = filePath
         )
     }
 

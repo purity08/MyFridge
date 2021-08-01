@@ -60,7 +60,6 @@ object Utils {
         activity.reg_nav_host_fragment.visibility = View.VISIBLE
     }
 
-
     fun getBitmapFromURL(src: String?): Bitmap? {
         var bitmap: Bitmap? = null
         try {
@@ -75,31 +74,6 @@ object Utils {
             e.printStackTrace()
         }
         return bitmap
-    }
-
-    fun download(baseActivity: Context, url: String?, title: String?): Long {
-        val direct = File(Environment.DIRECTORY_PICTURES + File.separator)
-
-        if (!direct.exists()) {
-            direct.mkdirs()
-        }
-        val extension = url?.substring(url.lastIndexOf("."))
-        val downloadReference: Long
-        val dm: DownloadManager =
-            baseActivity.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-        val uri = Uri.parse(url)
-        val request = DownloadManager.Request(uri)
-        request.setDestinationInExternalPublicDir(
-            "/your_folder",
-            "png" + System.currentTimeMillis() + extension
-        )
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-        request.setTitle(title)
-        Toast.makeText(baseActivity, "start Downloading..", Toast.LENGTH_SHORT).show()
-
-        downloadReference = dm.enqueue(request)
-
-        return downloadReference
     }
 
     fun saveToGallery(context: Context, bitmap: Bitmap, name: String): String {
@@ -118,44 +92,5 @@ object Utils {
         return image.absolutePath
     }
 
-    class Connection(src: String, context: Context) : AsyncTask<Any?, Any?, Any?>() {
-        val src = src
 
-        val context: Context = context
-        lateinit var bitmap: Bitmap
-        var imagePath: String = ""
-
-        override fun doInBackground(vararg p0: Any?): Any? {
-            bitmap = getBitmapFromURL(src)!!
-            imagePath = saveToGallery(context, bitmap, "user_${auth.currentUser!!.uid}")
-
-            Timber.d("start_background:_${imagePath}")
-            return null
-        }
-
-        override fun onPostExecute(result: Any?) {
-            super.onPostExecute(result)
-            Timber.d("post_background:_${imagePath}")
-            val account = Account(
-                id = "bg",
-                name = "bg",
-                lastName = "bg",
-                email = "bg",
-                phoneNumber = "bg",
-                photoUrl = imagePath
-            )
-            Timber.d("imagePath: $imagePath")
-
-            /*
-            val photoFile = File(imagePath)
-            if (photoFile.exists()) {
-                imageView.setImageURI(Uri.fromFile(photoFile))
-                imageView.visibility = View.VISIBLE
-            }
-
-            (view as TextInputEditText).setText(account.toString())
-
-             */
-        }
-    }
 }

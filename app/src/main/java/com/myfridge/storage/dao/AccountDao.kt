@@ -10,11 +10,6 @@ interface AccountDao {
     @Query("SELECT * FROM account")
     fun get(): LiveData<Account>
 
-    /*
-    @Query("SELECT photoUrl FROM account where photoUrl = '{url}'")
-    fun getPhotoUrl(): String
-     */
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(account: Account)
 
