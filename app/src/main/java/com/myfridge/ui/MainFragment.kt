@@ -5,7 +5,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.myfridge.R
+import com.myfridge.auth.FirebaseInstance.auth
 import com.myfridge.ui.main.MainActivity
 import com.myfridge.ui.registration.RegistrationActivity
 import com.myfridge.util.UserSettings
@@ -22,17 +26,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         mainActivity = activity as MainActivity
 
         mainActivityViewModel.account.observe(viewLifecycleOwner, { account ->
+            //account.photoUrl = "qwe"
             mainTextView.setText(account.toString())
             //TODO add photo to imageView
         })
 
-        logout_button.setOnClickListener {
-            val intent = Intent(requireContext(), RegistrationActivity()::class.java)
-            startActivity(intent)
-            mainActivity.finish()
+        profileButton.setOnClickListener {
 
-            UserSettings.saveFirstLogin(requireContext(), false)
-            UserSettings.saveFirstGoogleLogin(requireContext(), false)
         }
     }
 }

@@ -17,8 +17,11 @@ import android.widget.Toast
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
 import android.widget.ImageView
+import androidx.fragment.app.viewModels
 import com.google.android.material.textfield.TextInputEditText
+import com.myfridge.auth.FirebaseInstance.auth
 import com.myfridge.storage.entity.Account
+import com.myfridge.viewModel.MainActivityViewModel
 import timber.log.Timber
 import java.io.*
 import java.lang.Exception
@@ -26,6 +29,7 @@ import java.net.HttpURLConnection
 
 
 object Utils {
+
     fun Fragment.hideKeyboard() {
         view?.let { activity?.hideKeyboard(it) }
     }
@@ -54,14 +58,6 @@ object Utils {
         activity.progress_circular.visibility = View.GONE
         activity.progress_textView.visibility = View.GONE
         activity.reg_nav_host_fragment.visibility = View.VISIBLE
-    }
-
-    fun download(link: String, path: String) {
-        URL(link).openStream().use { input ->
-            FileOutputStream(File(path)).use { output ->
-                input.copyTo(output)
-            }
-        }
     }
 
 
@@ -122,18 +118,16 @@ object Utils {
         return image.absolutePath
     }
 
-    class Connection(src: String, context: Context, textView: View, imageView: ImageView) : AsyncTask<Any?, Any?, Any?>() {
+    class Connection(src: String, context: Context) : AsyncTask<Any?, Any?, Any?>() {
         val src = src
-        val view = textView
-        val imageView = imageView
 
         val context: Context = context
         lateinit var bitmap: Bitmap
         var imagePath: String = ""
 
         override fun doInBackground(vararg p0: Any?): Any? {
-            bitmap = Utils.getBitmapFromURL(src)!!
-            imagePath = Utils.saveToGallery(context, bitmap, "profilePhoto")
+            bitmap = getBitmapFromURL(src)!!
+            imagePath = saveToGallery(context, bitmap, "user_${auth.currentUser!!.uid}")
 
             Timber.d("start_background:_${imagePath}")
             return null
@@ -150,16 +144,18 @@ object Utils {
                 phoneNumber = "bg",
                 photoUrl = imagePath
             )
-            //MainActivity().account = account
-
             Timber.d("imagePath: $imagePath")
 
+            /*
             val photoFile = File(imagePath)
             if (photoFile.exists()) {
                 imageView.setImageURI(Uri.fromFile(photoFile))
                 imageView.visibility = View.VISIBLE
             }
+
             (view as TextInputEditText).setText(account.toString())
+
+             */
         }
     }
 }
