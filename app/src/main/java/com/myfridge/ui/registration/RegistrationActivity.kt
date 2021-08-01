@@ -33,6 +33,7 @@ class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
         super.onCreate(savedInstanceState)
         auth.useAppLanguage()
 
+
         buildGoogleSignIn()
     }
 

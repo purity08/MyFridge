@@ -76,7 +76,7 @@ object PhoneAuth {
             .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
             .build()
         this.activity = activity
-
+        Timber.d("bind_activity: ${activity.javaClass.name}")
         //show circular progress bar while auth
         showProgressBar(activity as RegistrationActivity)
 

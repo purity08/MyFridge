@@ -23,6 +23,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         mainActivityViewModel.account.observe(viewLifecycleOwner, { account ->
             mainTextView.setText(account.toString())
+            //TODO add photo to imageView
         })
 
         logout_button.setOnClickListener {
