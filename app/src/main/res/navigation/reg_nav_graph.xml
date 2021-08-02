@@ -22,6 +22,10 @@
         <action
             android:id="@+id/action_regSecondStepFragment_to_regThirdStepFragment"
             app:destination="@id/regThirdStepFragment" />
+        <argument
+            android:name="phoneNumber"
+            app:argType="string"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/regThirdStepFragment"

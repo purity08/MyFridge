@@ -24,6 +24,7 @@ class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
 
     private lateinit var mGoogleSignInClient: GoogleSignInClient
 
+    var phoneNumber: String = ""
     var regFirstStepFragment: RegFirstStepFragment? = null
     var regSecondStepFragment: RegSecondStepFragment? = null
 
@@ -32,7 +33,6 @@ class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth.useAppLanguage()
-
 
         buildGoogleSignIn()
     }

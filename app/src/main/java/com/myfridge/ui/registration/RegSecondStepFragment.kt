@@ -4,8 +4,10 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.WindowManager
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.myfridge.R
+import com.myfridge.auth.FirebaseInstance.auth
 import com.myfridge.auth.PhoneAuth
 import kotlinx.android.synthetic.main.fragment_reg_second_step.*
 
@@ -19,10 +21,11 @@ class RegSecondStepFragment : Fragment(R.layout.fragment_reg_second_step) {
         registrationActivity = activity as RegistrationActivity
         registrationActivity.regSecondStepFragment = this
 
+        phoneNumberTextView.text = registrationActivity.phoneNumber
+
         confirmButton.setOnClickListener {
 
             val code = enterCodeEditText.text.toString()
-
             PhoneAuth.verifyPhoneNumberWithCode(code)
         }
         resentSmsCodeTextView.setOnClickListener {
@@ -33,5 +36,4 @@ class RegSecondStepFragment : Fragment(R.layout.fragment_reg_second_step) {
     fun navigateToThirdStep() {
         findNavController().navigate(R.id.regThirdStepFragment)
     }
-
 }
