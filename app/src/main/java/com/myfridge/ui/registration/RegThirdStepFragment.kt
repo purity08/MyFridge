@@ -22,10 +22,11 @@ import com.myfridge.auth.FirebaseInstance.auth
 import com.myfridge.storage.entity.Account
 import com.myfridge.util.UserSettings
 import com.myfridge.util.Utils
+import com.myfridge.util.Utils.gone
 import com.myfridge.viewModel.AddAccountViewModel
 import kotlinx.android.synthetic.main.dialog_pick_photo.view.*
 import kotlinx.android.synthetic.main.fragment_reg_third_step.*
-
+import com.myfridge.util.Utils.setVisibility
 
 class RegThirdStepFragment : Fragment(R.layout.fragment_reg_third_step) {
 
@@ -109,14 +110,16 @@ class RegThirdStepFragment : Fragment(R.layout.fragment_reg_third_step) {
             if (requestCode == REQUEST_IMAGE_CAPTURE) {
                 val imageBitmap = data?.extras?.get("data") as Bitmap
                 photoUserImageView.setImageBitmap(imageBitmap)
-                photoUserImageView.visibility = View.VISIBLE
-                textInfoPhotoTextView.visibility = View.GONE
+
+                photoUserImageView.setVisibility(true)
+                textInfoPhotoTextView.gone()
+
             } else if (requestCode == REQUEST_PICK_IMAGE) {
                 val uri = data?.data
                 photoUserImageView.setImageURI(uri)
 
-                photoUserImageView.visibility = View.VISIBLE
-                textInfoPhotoTextView.visibility = View.GONE
+                photoUserImageView.setVisibility(true)
+                textInfoPhotoTextView.gone()
             }
         }
     }

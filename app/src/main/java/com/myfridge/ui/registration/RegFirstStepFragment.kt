@@ -34,9 +34,10 @@ class RegFirstStepFragment : Fragment(R.layout.fragment_reg_first_step) {
             Timber.d("phoneNumber: $phoneNumber")
 
             hideKeyboard()
-            PhoneAuth.startPhoneVerification(registrationActivity, phoneNumber)
 
+            PhoneAuth.startPhoneVerification(registrationActivity, phoneNumber)
             registrationActivity.phoneNumber = phoneNumber
+
         }
 
         googleSignButton.setOnClickListener {

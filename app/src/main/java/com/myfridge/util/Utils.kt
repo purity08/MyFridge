@@ -38,6 +38,14 @@ object Utils {
         hideKeyboard(currentFocus ?: View(this))
     }
 
+    fun View.setVisibility(isVisible: Boolean) {
+        this.visibility = if(!isVisible) View.INVISIBLE else View.VISIBLE
+    }
+
+    fun View.gone() {
+        this.visibility = View.GONE
+    }
+
     fun Context.hideKeyboard(view: View) {
         val inputMethodManager =
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -45,19 +53,19 @@ object Utils {
     }
 
     fun showProgressBar(activity: RegistrationActivity, text: String = "") {
-        activity.progress_circular.visibility = View.VISIBLE
-        activity.progress_textView.visibility = View.VISIBLE
+        activity.progress_circular.setVisibility(true)
+        activity.progress_textView.setVisibility(true)
         if (text != "") {
             activity.progress_textView.text = text
         }
 
-        activity.reg_nav_host_fragment.visibility = View.INVISIBLE
+        activity.reg_nav_host_fragment.setVisibility(false)
     }
 
     fun hideProgressBar(activity: RegistrationActivity) {
-        activity.progress_circular.visibility = View.GONE
-        activity.progress_textView.visibility = View.GONE
-        activity.reg_nav_host_fragment.visibility = View.VISIBLE
+        activity.progress_circular.gone()
+        activity.progress_textView.gone()
+        activity.reg_nav_host_fragment.setVisibility(true)
     }
 
     fun getBitmapFromURL(src: String?): Bitmap? {
