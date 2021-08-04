@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         observeAccount()
         setupBottomNavigation()
+
+
     }
 
     private fun setupBottomNavigation() {
@@ -42,6 +44,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             }
            profile_circle_image.setImageURI(Uri.fromFile(File(account.imagePath)))
         })
+    }
+
+    private fun navigateToProfile() {
+
     }
 }
 

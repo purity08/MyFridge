@@ -17,7 +17,7 @@
             app:exitAnim="@anim/nav_default_exit_anim" />
         <action
             android:id="@+id/action_mainFragment_to_recipesFragment"
-            app:destination="@id/recipesFragment" />
+            app:destination="@id/cookingFragment" />
         <action
             android:id="@+id/action_mainFragment_to_checkList"
             app:destination="@id/checkListFragment" />
@@ -27,10 +27,10 @@
         android:name="com.myfridge.ui.StatisticsFragment"
         tools:layout="@layout/fragment_statistics" />
     <fragment
-        android:id="@+id/recipesFragment"
-        android:name="com.myfridge.ui.RecipesFragment"
-        android:label="fragment_recipes"
-        tools:layout="@layout/fragment_recipes" />
+        android:id="@+id/cookingFragment"
+        android:name="com.myfridge.ui.CookingFragment"
+        android:label="fragment_cooking"
+        tools:layout="@layout/fragment_cooking" />
     <fragment
         android:id="@+id/checkListFragment"
         android:name="com.myfridge.ui.CheckListFragment"

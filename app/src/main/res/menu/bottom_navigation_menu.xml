@@ -11,10 +11,10 @@
         android:icon="@drawable/ic_check_list"
         android:title="@string/check_list" />
     <item
-        android:id="@+id/recipesFragment"
+        android:id="@+id/cookingFragment"
         android:enabled="true"
         android:icon="@drawable/ic_recipes"
-        android:title="@string/recipes" />
+        android:title="@string/cooking" />
     <item
         android:id="@+id/statisticsFragment"
         android:enabled="true"
