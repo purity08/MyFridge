@@ -1,10 +1,10 @@
 package com.myfridge.ui.main
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.myfridge.R
@@ -25,7 +25,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         observeAccount()
         setupBottomNavigation()
 
-
+        profile_circle_image.setOnClickListener {
+            navigateToProfile()
+        }
     }
 
     private fun setupBottomNavigation() {
@@ -41,13 +43,19 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             ) {
                 val path = DownloadImage(account.imagePath, this).execute("").get()
                 account.imagePath = path.toString()
+                account.lastName = account.name!!.split(" ")[1]
+                account.name = account.name!!.split(" ")[0]
             }
            profile_circle_image.setImageURI(Uri.fromFile(File(account.imagePath)))
         })
     }
 
     private fun navigateToProfile() {
+        val account = mainActivityViewModel.account.value
 
+        val intent = Intent(this, ProfileActivity::class.java)
+            .putExtra("profile", account)
+        startActivity(intent)
     }
 }
 

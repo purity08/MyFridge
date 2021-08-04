@@ -37,7 +37,10 @@
 
         <activity android:name="com.myfridge.ui.main.MainActivity" />
 
+        <activity android:name="com.myfridge.ui.main.ProfileActivity" />
+
         <activity android:name="com.myfridge.ui.registration.RegistrationActivity" />
+
     </application>
 
 </manifest>

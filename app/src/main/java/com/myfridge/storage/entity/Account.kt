@@ -8,8 +8,8 @@ import java.io.Serializable
 data class Account(
     @PrimaryKey
     val id: String,
-    val name: String? = "",
-    val lastName: String = "",
+    var name: String? = "",
+    var lastName: String = "",
     val email: String? = "",
     val phoneNumber: String? = "",
     var imagePath: String = ""
