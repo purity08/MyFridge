@@ -8,14 +8,30 @@
     android:orientation="vertical"
     tools:context="com.myfridge.ui.main.MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/main_nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/main_nav_graph" />
+        android:layout_weight="1">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/main_nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/main_nav_graph" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_circle_image"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"
+            />
+    </FrameLayout>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

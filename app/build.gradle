@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
-
 }
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "kotlin-kapt"
@@ -142,4 +141,6 @@ dependencies {
 
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:2.4.0-alpha04")
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
