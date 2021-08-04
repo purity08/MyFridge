@@ -30,7 +30,6 @@ class RegFirstStepFragment : Fragment(R.layout.fragment_reg_first_step) {
         sendNumberButton.setOnClickListener {
             val phoneNumber = countryCodePicker.selectedCountryCodeWithPlus +
                     phoneNumberEditText.text.toString().trim()
-
             Timber.d("phoneNumber: $phoneNumber")
 
             hideKeyboard()

@@ -38,15 +38,6 @@ object PhoneAuth {
 
             hideProgressBar(activity as RegistrationActivity)
             Toast.makeText(activity, e.localizedMessage, Toast.LENGTH_LONG).show()
-            /*
-            if (e is FirebaseAuthInvalidCredentialsException) {
-
-            } else if (e is FirebaseTooManyRequestsException) {
-
-            }
-
-             */
-            // Show a message and update the UI
         }
 
         override fun onCodeSent(
@@ -68,6 +59,18 @@ object PhoneAuth {
         }
     }
 
+    fun resendVerificationCode(phoneNumber: String, activity: AppCompatActivity) {
+        val options = PhoneAuthOptions.newBuilder(auth)
+            .setPhoneNumber(phoneNumber) // Phone number to verify
+            .setForceResendingToken(resendToken)
+            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+            .setActivity(activity)                 // Activity (for callback binding)
+            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
+            .build()
+
+        PhoneAuthProvider.verifyPhoneNumber(options)
+    }
+
     fun startPhoneVerification(activity: AppCompatActivity, phoneNumber: String) {
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber(phoneNumber) // Phone number to verify
@@ -77,6 +80,7 @@ object PhoneAuth {
             .build()
         this.activity = activity
         Timber.d("bind_activity: ${activity.javaClass.name}")
+
         //show circular progress bar while auth
         showProgressBar(activity as RegistrationActivity)
 
@@ -111,10 +115,6 @@ object PhoneAuth {
                     hideProgressBar(activity as RegistrationActivity)
 
                     Toast.makeText(activity, "wrong code", Toast.LENGTH_LONG).show()
-//                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
-//                        // The verification code entered was invalid
-//                    }
-                    // Update UI
                 }
             }
     }

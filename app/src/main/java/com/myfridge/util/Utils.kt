@@ -3,29 +3,16 @@ package com.myfridge.util
 import android.app.Activity
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Environment
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import com.myfridge.ui.registration.RegistrationActivity
 import kotlinx.android.synthetic.main.activity_registration.*
-import java.net.URL
-import android.app.DownloadManager
-import android.net.Uri
-import android.widget.Toast
-
-import android.graphics.BitmapFactory
-import android.os.AsyncTask
-import android.widget.ImageView
-import androidx.fragment.app.viewModels
-import com.google.android.material.textfield.TextInputEditText
-import com.myfridge.auth.FirebaseInstance.auth
-import com.myfridge.storage.entity.Account
-import com.myfridge.viewModel.MainActivityViewModel
-import timber.log.Timber
 import java.io.*
-import java.lang.Exception
 import java.net.HttpURLConnection
+import java.net.URL
 
 
 object Utils {

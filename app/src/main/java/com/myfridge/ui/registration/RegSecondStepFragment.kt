@@ -24,12 +24,11 @@ class RegSecondStepFragment : Fragment(R.layout.fragment_reg_second_step) {
         phoneNumberTextView.text = registrationActivity.phoneNumber
 
         confirmButton.setOnClickListener {
-
             val code = enterCodeEditText.text.toString()
             PhoneAuth.verifyPhoneNumberWithCode(code)
         }
         resentSmsCodeTextView.setOnClickListener {
-            //TODO resend verification code: PhoneAuth.resendVerificationCode()
+            PhoneAuth.resendVerificationCode(registrationActivity.phoneNumber, registrationActivity)
         }
     }
 

@@ -2,6 +2,7 @@ package com.myfridge.ui.registration
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
@@ -104,8 +105,8 @@ class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
 
                     navigateToMainActivity()
                 } else {
-                    // If sign in fails, display a message to the user.
                     Timber.d("signInWithCredential:failure ${task.exception}")
+                    Toast.makeText(this, task.exception.toString(), Toast.LENGTH_LONG).show()
                 }
             }
     }
