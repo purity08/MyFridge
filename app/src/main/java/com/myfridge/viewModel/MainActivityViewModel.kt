@@ -15,4 +15,7 @@ class MainActivityViewModel : ViewModel() {
     fun insertAccount(account: Account) = viewModelScope.launch(Dispatchers.IO) {
         Repositories.accountRepository.insert(account)
     }
+    fun updateAccount(account: Account) = viewModelScope.launch(Dispatchers.IO){
+        Repositories.accountRepository.update(account)
+    }
 }

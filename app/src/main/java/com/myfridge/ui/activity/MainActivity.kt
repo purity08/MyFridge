@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View.OnTouchListener
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
@@ -28,12 +29,16 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initializeUI()
+    }
 
+    private fun initializeUI() {
         observeAccount()
 
-        initializeImageTouch()
-
         setupBottomNavigation()
+
+        initializeImageTouch()
+        profile_circle_image.setOnTouchListener(touchListener)
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -42,13 +47,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         var xDelta = 0
         var yDelta = 0
 
-        val MAX_CLICK_DURATION = 2000
+        val MAX_CLICK_DURATION = 1000
         val MAX_CLICK_DISTANCE = 60
 
         var pressStartTime = 0L
         var pressedX = 0
         var pressedY = 0
-        var stayedWithinClickDistance = true
+        var stayedWithinClickDistance = false
 
         touchListener = OnTouchListener { view, event ->
             val x = event.rawX.toInt()
@@ -66,7 +71,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                     pressedY = y
                     pressStartTime = System.currentTimeMillis()
                     stayedWithinClickDistance = true
-
                 }
 
                 MotionEvent.ACTION_UP -> {
@@ -77,17 +81,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 }
 
                 MotionEvent.ACTION_MOVE -> {
-                    if (stayedWithinClickDistance && Utils.distance(
-                            this,
-                            pressedX,
-                            pressedY,
-                            event.x,
-                            event.y
-                        ) > MAX_CLICK_DISTANCE
-                    ) {
-                        stayedWithinClickDistance = false
-                    }
-
                     if (x - xDelta + view.width <= container.width && y - yDelta + view.height <= container.height && x - xDelta >= 0 && y - yDelta >= 0) {
                         val layoutParams = view.layoutParams as FrameLayout.LayoutParams
                         layoutParams.leftMargin = x - xDelta
@@ -96,8 +89,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                         layoutParams.bottomMargin = 0
                         view.layoutParams = layoutParams
                     }
+                    val distance = Utils.distance(
+                        this,
+                        pressedX,
+                        pressedY,
+                        event.x,
+                        event.y
+                    )
+                    if (stayedWithinClickDistance && distance > MAX_CLICK_DISTANCE) {
+                        stayedWithinClickDistance = false
+                    }
                 }
-
             }
             container.invalidate()
             true
@@ -119,9 +121,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 account.imagePath = path.toString()
                 account.lastName = account.name!!.split(" ")[1]
                 account.name = account.name!!.split(" ")[0]
+
+                UserSettings.saveFirstStart(this, value = false)
             }
             profile_circle_image.setImageURI(Uri.fromFile(File(account.imagePath)))
-            profile_circle_image.setOnTouchListener(touchListener)
+
         })
     }
 

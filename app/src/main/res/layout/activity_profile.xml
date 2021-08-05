@@ -12,24 +12,27 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/ic_back"
-        android:layout_gravity="start"
-        android:layout_margin="10dp"
-        android:background="@color/transparent"
-        />
-    <ImageView
-        android:id="@+id/profileImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginVertical="20dp" />
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="start"
+            android:layout_margin="10dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImage"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="20dp"
+            app:civ_border_color="@color/transparent" />
+
     </FrameLayout>
 
-    <com.google.android.material.textview.MaterialTextView
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/profileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +48,7 @@
         android:textColor="@color/grey"
         android:textSize="11sp" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/profileLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,7 +64,7 @@
         android:textColor="@color/grey"
         android:textSize="11sp" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/profileEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -77,7 +80,7 @@
         android:textColor="@color/grey"
         android:textSize="11sp" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/profilePhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,8 +91,15 @@
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
         android:text="@string/profile_phone_number"
         android:textColor="@color/grey"
         android:textSize="11sp" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/save" />
 </LinearLayout>
