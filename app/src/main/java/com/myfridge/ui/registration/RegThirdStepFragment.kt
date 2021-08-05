@@ -1,6 +1,7 @@
 package com.myfridge.ui.registration
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -32,6 +33,7 @@ class RegThirdStepFragment : Fragment(R.layout.fragment_reg_third_step) {
 
     private val addAccountViewModel: AddAccountViewModel by viewModels()
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
@@ -62,7 +64,6 @@ class RegThirdStepFragment : Fragment(R.layout.fragment_reg_third_step) {
 
         skipButton.setOnClickListener {
 
-            //TODO add default photo
             val account = assembleAccount(
                 "firstName", "lastName", "email", resources.getDrawable(R.drawable.default_profile_photo)
             )
