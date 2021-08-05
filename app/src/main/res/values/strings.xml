@@ -27,6 +27,7 @@
     <string name="hint_last_name">Last Name</string>
     <string name="hint_email">Email</string>
     <string name="complete">Complete</string>
+    <string name="skip">Skip</string>
     <string name="authorization">Authorization..</string>
     <string name="click_here_to_add_photo">Click here to add photo</string>
 

@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory
 import android.os.Environment
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.myfridge.ui.registration.RegistrationActivity
 import kotlinx.android.synthetic.main.activity_registration.*
@@ -37,6 +38,17 @@ object Utils {
         val inputMethodManager =
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+     fun distance(activity: AppCompatActivity, x1: Int, y1: Int, x2: Float, y2: Float): Float {
+        val dx = x1 - x2
+        val dy = y1 - y2
+        val distanceInPx = Math.sqrt((dx * dx + dy * dy).toDouble()).toFloat()
+        return pxToDp(activity, distanceInPx)
+    }
+
+     private fun pxToDp(activity: AppCompatActivity, px: Float): Float {
+        return px / activity.resources.displayMetrics.density
     }
 
     fun showProgressBar(activity: RegistrationActivity, text: String = "") {

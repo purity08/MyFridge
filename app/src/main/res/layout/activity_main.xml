@@ -9,6 +9,7 @@
     tools:context="com.myfridge.ui.main.MainActivity">
 
     <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -17,7 +18,7 @@
             android:id="@+id/main_nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             app:defaultNavHost="true"
             app:navGraph="@navigation/main_nav_graph" />
 
@@ -25,10 +26,7 @@
             android:id="@+id/profile_circle_image"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_gravity="end"
-            android:layout_margin="10dp"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="2dp" />
+            app:civ_border_color="@color/transparent" />
     </FrameLayout>
 
 

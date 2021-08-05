@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -50,8 +51,8 @@
             android:layout_gravity="center"
             android:background="@drawable/background_for_image"
             android:gravity="center"
-            android:textColor="@color/black"
             android:text="@string/click_here_to_add_photo"
+            android:textColor="@color/black"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -90,19 +91,41 @@
         android:padding="10dp"
         android:textSize="16sp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/completeButton"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginVertical="20dp"
-        android:backgroundTint="@color/light_grey"
-        android:paddingVertical="10dp"
-        android:text="@string/complete"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="normal" />
+        android:orientation="horizontal">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/skipButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="20dp"
+            android:layout_weight="0.5"
+            android:backgroundTint="@color/light_grey"
+            android:paddingVertical="10dp"
+            android:text="@string/skip"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/completeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="20dp"
+            android:layout_weight="0.4"
+            android:backgroundTint="@color/light_grey"
+            android:paddingVertical="10dp"
+            android:text="@string/complete"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+    </LinearLayout>
 </LinearLayout>

@@ -58,9 +58,19 @@ class RegThirdStepFragment : Fragment(R.layout.fragment_reg_third_step) {
                 Toast.makeText(requireContext(), "Fill in all the fields!", Toast.LENGTH_SHORT)
                     .show()
             }
+        }
 
+        skipButton.setOnClickListener {
+
+            //TODO add default photo
+            val account = assembleAccount(
+                "firstName", "lastName", "email", resources.getDrawable(R.drawable.default_profile_photo)
+            )
+            addAccountViewModel.insert(account)
+            navigateToMain()
         }
     }
+
 
     private fun assembleAccount(firstName: String, lastName: String, email: String, photo: Drawable): Account {
         UserSettings.saveRegUser(requireContext(), true)
