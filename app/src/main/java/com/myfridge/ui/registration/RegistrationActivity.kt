@@ -5,15 +5,13 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.*
-import com.google.gson.Gson
 import com.myfridge.R
-import com.myfridge.ui.main.MainActivity
+import com.myfridge.ui.activity.MainActivity
 import timber.log.Timber
 import com.myfridge.auth.FirebaseInstance.auth
 import com.myfridge.storage.entity.Account

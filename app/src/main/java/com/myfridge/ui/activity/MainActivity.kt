@@ -1,4 +1,4 @@
-package com.myfridge.ui.main
+package com.myfridge.ui.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -42,13 +42,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         var xDelta = 0
         var yDelta = 0
 
-        val MAX_CLICK_DURATION = 500
-        val MAX_CLICK_DISTANCE = 30
+        val MAX_CLICK_DURATION = 2000
+        val MAX_CLICK_DISTANCE = 60
 
         var pressStartTime = 0L
         var pressedX = 0
         var pressedY = 0
-        var stayedWithinClickDistance = false
+        var stayedWithinClickDistance = true
 
         touchListener = OnTouchListener { view, event ->
             val x = event.rawX.toInt()
@@ -87,6 +87,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                     ) {
                         stayedWithinClickDistance = false
                     }
+
                     if (x - xDelta + view.width <= container.width && y - yDelta + view.height <= container.height && x - xDelta >= 0 && y - yDelta >= 0) {
                         val layoutParams = view.layoutParams as FrameLayout.LayoutParams
                         layoutParams.leftMargin = x - xDelta

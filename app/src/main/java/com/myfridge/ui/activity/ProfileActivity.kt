@@ -1,4 +1,4 @@
-package com.myfridge.ui.main
+package com.myfridge.ui.activity
 
 import android.net.Uri
 import android.os.Bundle
@@ -17,6 +17,10 @@ class ProfileActivity: AppCompatActivity(R.layout.activity_profile) {
         profile = intent.extras!!.get("profile") as Account
 
         initializeUI()
+
+        backButton.setOnClickListener {
+            finish()
+        }
     }
     private fun initializeUI() {
         profileImage.setImageURI(Uri.fromFile(File(profile.imagePath)))

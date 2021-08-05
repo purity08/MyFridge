@@ -3,7 +3,7 @@ package com.myfridge
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.myfridge.ui.main.MainActivity
+import com.myfridge.ui.activity.MainActivity
 import com.myfridge.ui.registration.RegistrationActivity
 import com.myfridge.util.UserSettings
 

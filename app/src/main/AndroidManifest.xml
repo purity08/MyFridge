@@ -35,9 +35,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.myfridge.ui.main.MainActivity" />
+        <activity android:name="com.myfridge.ui.activity.MainActivity" />
 
-        <activity android:name="com.myfridge.ui.main.ProfileActivity" />
+        <activity android:name="com.myfridge.ui.activity.ProfileActivity" />
 
         <activity android:name="com.myfridge.ui.registration.RegistrationActivity" />
 

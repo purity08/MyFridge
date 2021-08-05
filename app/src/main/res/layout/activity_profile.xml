@@ -7,13 +7,27 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     app:layout_scrollFlags="scroll"
-    tools:context=".ui.main.ProfileActivity">
+    tools:context=".ui.activity.ProfileActivity">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_back"
+        android:layout_gravity="start"
+        android:layout_margin="10dp"
+        android:background="@color/transparent"
+        />
     <ImageView
         android:id="@+id/profileImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginVertical="20dp" />
+    </FrameLayout>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/profileName"
