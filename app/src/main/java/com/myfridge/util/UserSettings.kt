@@ -10,6 +10,7 @@ object UserSettings {
     private const val keyFirstLogin = "keyFirstLogin"
     private const val keyFirstStart = "keyFirstStart"
     private const val keyFirstGoogleLogin = "keyFirstGoogleLogin"
+    private const val keySaveTabsCount = "keySaveTabsCount"
 
     fun saveRegUser(context: Context, value: Boolean) {
         getPrefs(context).edit().putBoolean(keyRegUser, value).apply()
@@ -31,7 +32,6 @@ object UserSettings {
         getPrefs(context).edit().clear().putBoolean(keyFirstLogin, value).apply()
     }
 
-
     fun getFirstLogin(context: Context): Boolean {
         return getPrefs(context).getBoolean(keyFirstLogin, false)
     }
@@ -44,6 +44,14 @@ object UserSettings {
         return getPrefs(context).getBoolean(keyFirstGoogleLogin, false)
     }
 
+    fun saveTabsCount(context: Context, value: Int) {
+        //getPrefs(context).edit().clear().putInt(keySaveTabsCount, value).apply()
+        getPrefs(context).edit().remove("keySaveTabsCount").putInt(keySaveTabsCount, value).apply()
+    }
+
+    fun getTabsCount(context: Context): Int {
+        return getPrefs(context).getInt(keySaveTabsCount, 1)
+    }
 
     private fun getPrefs(context: Context): SharedPreferences {
         return context.getSharedPreferences(SHARED_PREFS_FILE_NAME, Context.MODE_PRIVATE)

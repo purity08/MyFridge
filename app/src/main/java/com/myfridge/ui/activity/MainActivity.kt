@@ -5,19 +5,22 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.MotionEvent
+import android.view.View
 import android.view.View.OnTouchListener
 import android.widget.FrameLayout
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.snackbar.Snackbar
 import com.myfridge.R
+import com.myfridge.storage.entity.Account
 import com.myfridge.util.DownloadImage
 import com.myfridge.util.UserSettings
 import com.myfridge.util.Utils
 import com.myfridge.viewModel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 import java.io.File
 
 
@@ -38,8 +41,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         setupBottomNavigation()
 
         initializeImageTouch()
+
         profile_circle_image.setOnTouchListener(touchListener)
     }
+
 
     @SuppressLint("ClickableViewAccessibility")
     private fun initializeImageTouch() {
@@ -115,18 +120,31 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private fun observeAccount() {
         mainActivityViewModel.account.observe(this, { account ->
-            if (UserSettings.getFirstGoogleLogin(this) && UserSettings.getFirstStart(this)
-            ) {
+            if (UserSettings.getFirstGoogleLogin(this) && UserSettings.getFirstStart(this)) {
                 val path = DownloadImage(account.imagePath, this).execute("").get()
-                account.imagePath = path.toString()
-                account.lastName = account.name!!.split(" ")[1]
-                account.name = account.name!!.split(" ")[0]
+                val lastName = account.name!!.split(" ")[1]
+                val name = account.name!!.split(" ")[0]
+
+                mainActivityViewModel.updateAccount(
+                    Account(
+                        account.id,
+                        name,
+                        lastName,
+                        account.email,
+                        account.phoneNumber,
+                        path.toString()
+                    )
+                )
 
                 UserSettings.saveFirstStart(this, value = false)
+                Timber.d("google_login")
             }
-            profile_circle_image.setImageURI(Uri.fromFile(File(account.imagePath)))
-
+            Timber.d("account_image:_${account.imagePath}")
+            if (File(account.imagePath).exists()) {
+                profile_circle_image.setImageURI(Uri.fromFile(File(account.imagePath)))
+            }
         })
+
     }
 
     private fun navigateToProfile() {

@@ -3,7 +3,7 @@ package com.myfridge.util
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.AsyncTask
-import com.myfridge.auth.FirebaseInstance
+import com.myfridge.auth.FirebaseInstance.auth
 
 
 class DownloadImage(
@@ -18,7 +18,7 @@ class DownloadImage(
         return Utils.saveToGallery(
             context,
             bitmap,
-            "user_${FirebaseInstance.auth.currentUser!!.uid}"
+            "user_${auth.currentUser!!.uid}"
         )
     }
 }
