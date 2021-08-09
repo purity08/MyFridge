@@ -1,5 +1,6 @@
 package com.myfridge.viewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myfridge.storage.Repositories
@@ -10,6 +11,10 @@ import kotlinx.coroutines.launch
 class ProductViewModel : ViewModel() {
     val products by lazy {
         Repositories.productsRepository.getAll()
+    }
+
+    fun getAllByName(name: String): LiveData<List<Product>> {
+       return Repositories.productsRepository.getAllByName(name)
     }
 
     fun insertProduct(product: Product) = viewModelScope.launch(Dispatchers.IO) {

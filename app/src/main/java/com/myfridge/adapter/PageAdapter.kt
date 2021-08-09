@@ -3,9 +3,10 @@ package com.myfridge.adapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.myfridge.storage.entity.Category
 import com.myfridge.ui.TabContentFragment
 
-class PageAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class PageAdapter(fragment: Fragment, private val categoriesList: ArrayList<Category>): FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int = 5
 
@@ -13,8 +14,7 @@ class PageAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
         val fragment = TabContentFragment()
         fragment.arguments = Bundle().apply {
-           //putSerializable(ARG_OBJECT, productsList as Serializable)
-            //putString(ARG_OBJECT, productsList[position])
+            putString(ARG_OBJECT, categoriesList[position].name)
         }
         return fragment
     }

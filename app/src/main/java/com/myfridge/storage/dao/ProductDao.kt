@@ -11,7 +11,7 @@ interface ProductDao {
     fun getAll(): LiveData<List<Product>>
 
     @Query("SELECT * FROM product WHERE name=:productName")
-    fun getByName(productName: String): LiveData<Product>
+    fun getAllByName(productName: String): LiveData<List<Product>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(product: Product)

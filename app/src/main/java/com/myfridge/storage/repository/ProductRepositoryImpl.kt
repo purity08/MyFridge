@@ -13,8 +13,8 @@ class ProductRepositoryImpl : ProductRepository {
 
     override fun getAll(): LiveData<List<Product>> = database.productDao().getAll()
 
-    override fun getByName(productName: String): LiveData<Product> =
-        database.productDao().getByName(productName)
+    override fun getAllByName(productName: String): LiveData<List<Product>> =
+        database.productDao().getAllByName(productName)
 
     override suspend fun insert(product: Product) = database.productDao().insert(product)
 

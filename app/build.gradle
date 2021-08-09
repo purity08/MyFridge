@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.myfridge"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
@@ -81,6 +81,7 @@ dependencies {
 
     //material design
     implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.google.android.gms:play-services-analytics-impl:17.0.0'
 
 
     //test
@@ -147,4 +148,9 @@ dependencies {
 
     //collapsing layout
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+
+    //Recycler view
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    // For control over item selection of both touch and mouse driven selection
+    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
 }

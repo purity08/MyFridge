@@ -7,7 +7,7 @@ interface ProductRepository {
 
     fun getAll(): LiveData<List<Product>>
 
-    fun getByName(productName: String): LiveData<Product>
+    fun getAllByName(productName: String): LiveData<List<Product>>
 
     suspend fun insert(product: Product)
 

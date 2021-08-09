@@ -8,7 +8,7 @@ import com.myfridge.storage.entity.Account
 import com.myfridge.storage.entity.Category
 import com.myfridge.storage.entity.Product
 
-@Database(entities = [Account::class, Product::class], version = 4)
+@Database(entities = [Account::class, Product::class], version = 5)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun accountDao(): AccountDao
