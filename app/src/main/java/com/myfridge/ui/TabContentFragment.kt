@@ -23,8 +23,8 @@ class TabContentFragment : Fragment(R.layout.fragment_tab_content) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
             Timber.d("contains_key")
-            //tabText.text = (getSerializable(ARG_OBJECT) as (List<*>)).toString()
-            tabText.text = getString(ARG_OBJECT)
+
+            //tabText.text = getString(ARG_OBJECT)
 
         }
     }

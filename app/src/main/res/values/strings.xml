@@ -50,7 +50,8 @@
     <string name="meat">Meat</string>
     <string name="other">Other</string>
 
-    <string name="add">Add</string>
+    <!-- FAB -->
+    <string name="add_product">Add new product</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

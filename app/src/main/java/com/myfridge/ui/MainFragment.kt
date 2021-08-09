@@ -22,6 +22,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
         loadCategories()
         setupTabs()
+
+        fab_add_product.setOnClickListener {
+
+        }
     }
 
     private fun loadCategories() {
@@ -33,16 +37,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             add(Category(id++, requireContext().getString(R.string.meat)))
             add(Category(id, requireContext().getString(R.string.other)))
         }
-        productsList.apply {
-            add(requireContext().getString(R.string.fruits))
-            add(requireContext().getString(R.string.vegetables))
-            add(requireContext().getString(R.string.milk_products))
-            add(requireContext().getString(R.string.meat))
-            add(requireContext().getString(R.string.other))
-        }
     }
+
     private fun setupTabs() {
-        pageAdapter = PageAdapter(this, productsList)
+        pageAdapter = PageAdapter(this)
         viewPager = pager
         viewPager.adapter = pageAdapter
 

@@ -7,6 +7,7 @@ interface AccountRepository {
 
     fun get(): LiveData<Account>
 
+
     suspend fun insert(account: Account)
 
     suspend fun delete(account: Account)
