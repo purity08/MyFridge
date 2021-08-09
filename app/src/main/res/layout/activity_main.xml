@@ -8,33 +8,28 @@
     android:orientation="vertical"
     tools:context="com.myfridge.ui.activity.MainActivity">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/coordinator"
+
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <FrameLayout
-            android:id="@+id/container"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/main_nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/main_nav_graph" />
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/main_nav_host_fragment"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:defaultNavHost="true"
-                app:navGraph="@navigation/main_nav_graph" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_circle_image"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_margin="55dp"
-                android:src="@drawable/default_profile_photo" />
-        </FrameLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_circle_image"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="55dp"
+            android:src="@drawable/default_profile_photo" />
+    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

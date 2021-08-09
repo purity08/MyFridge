@@ -5,14 +5,12 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.MotionEvent
-import android.view.View
 import android.view.View.OnTouchListener
 import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.snackbar.Snackbar
 import com.myfridge.R
 import com.myfridge.storage.entity.Account
 import com.myfridge.util.DownloadImage

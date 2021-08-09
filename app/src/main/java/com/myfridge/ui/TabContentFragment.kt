@@ -25,6 +25,7 @@ class TabContentFragment : Fragment(R.layout.fragment_tab_content) {
             Timber.d("contains_key")
             //tabText.text = (getSerializable(ARG_OBJECT) as (List<*>)).toString()
             tabText.text = getString(ARG_OBJECT)
+
         }
     }
 
