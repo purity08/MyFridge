@@ -27,7 +27,7 @@
             android:id="@+id/profile_circle_image"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_margin="55dp"
+            android:layout_margin="54dp"
             android:src="@drawable/default_profile_photo" />
     </FrameLayout>
 

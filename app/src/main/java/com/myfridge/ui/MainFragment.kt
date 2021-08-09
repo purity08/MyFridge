@@ -4,12 +4,15 @@ package com.myfridge.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.myfridge.R
 import com.myfridge.adapter.PageAdapter
 import com.myfridge.storage.entity.Category
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.coroutines.*
+import timber.log.Timber
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
@@ -20,16 +23,19 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadCategories()
-        setupTabs()
 
-        fab_add_product.setOnClickListener {
+        //fab_add_product.setOnClickListener {}
 
-        }
+       MainScope().async {
+            loadCategories()
+        }.invokeOnCompletion {
+           setupTabs()
+       }
     }
 
     private fun loadCategories() {
         var id = 0
+        Timber.d("add_categories")
         categoriesList.apply {
             add(Category(id++, requireContext().getString(R.string.fruits)))
             add(Category(id++, requireContext().getString(R.string.vegetables)))
