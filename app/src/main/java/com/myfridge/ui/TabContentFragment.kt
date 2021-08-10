@@ -1,5 +1,6 @@
 package com.myfridge.ui
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.myfridge.R
 import com.myfridge.adapter.ProductsAdapter
-import com.myfridge.storage.entity.Category
 import com.myfridge.storage.entity.Product
 import com.myfridge.viewModel.ProductViewModel
 import kotlinx.android.synthetic.main.fragment_tab_content.*
@@ -38,15 +38,45 @@ class TabContentFragment : Fragment(R.layout.fragment_tab_content) {
             subscribeToProducts()
         }
     }
+
+    private fun createConfirmDialog(product: Product): AlertDialog? {
+        val builder: AlertDialog.Builder? = activity?.let {
+            AlertDialog.Builder(it)
+        }
+
+        builder?.setMessage(R.string.dialog_confirm_text)
+            ?.setTitle("Delete")
+            ?.setPositiveButton(R.string.dialog_ok) { dialog, id ->
+                productsViewModel.removeProduct(product)
+            }
+            ?.setNegativeButton(R.string.dialog_cancel) { dialog, id ->
+                product.count = 1
+                dialog.cancel()
+            }
+        return builder?.create()
+    }
+
     private fun subscribeToProducts() {
-        val productsAdapter = ProductsAdapter(listOf())
+        val onClickAddProduct: (Product) -> Unit = {
+            productsViewModel.updateProduct(it)
+        }
+
+        val onClickRemoveProduct: (Product) -> Unit = { product ->
+            if (product.count == 0) {
+                createConfirmDialog(product)?.show()
+            } else {
+                productsViewModel.updateProduct(product)
+            }
+        }
+
+        val productsAdapter = ProductsAdapter(listOf(), onClickAddProduct, onClickRemoveProduct)
         productsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         productsRecyclerView.adapter = productsAdapter
 
         productsViewModel.products.observe(viewLifecycleOwner, { list ->
             Timber.d("list:_$list")
 
-           val l =  list.stream()
+            val l = list.stream()
                 .filter { it.category == productCategory }
                 .collect(Collectors.toList())
                 .toList()
@@ -55,6 +85,7 @@ class TabContentFragment : Fragment(R.layout.fragment_tab_content) {
         })
 
     }
+
     companion object {
         private const val ARG_OBJECT = "object"
     }

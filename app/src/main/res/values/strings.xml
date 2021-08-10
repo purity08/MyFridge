@@ -1,6 +1,7 @@
 <resources>
     <!-- trash -->
     <string name="my_fridge">MyFridge</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Navigation -->
     <string name="fridge">Fridge</string>
@@ -53,6 +54,16 @@
     <!-- FAB -->
     <string name="add_product">Add new product</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- dialog new product -->
+    <string name="new_product">New product</string>
+    <string name="product_name">Name</string>
+    <string name="product_category">Category</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_ok">OK</string>
+
+    <!-- dialog_ confirm -->
+    <string name="dialog_confirm_text">Delete product?</string>
+
+    <string name="number">1</string>
 
 </resources>
