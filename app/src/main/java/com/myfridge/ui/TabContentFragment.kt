@@ -2,9 +2,7 @@ package com.myfridge.ui
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +18,7 @@ class TabContentFragment : Fragment(R.layout.fragment_tab_content) {
 
     private val productsViewModel: ProductViewModel by viewModels()
     private lateinit var productCategory: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,12 +43,11 @@ class TabContentFragment : Fragment(R.layout.fragment_tab_content) {
             AlertDialog.Builder(it)
         }
 
-        builder?.setMessage(R.string.dialog_confirm_text)
-            ?.setTitle("Delete")
-            ?.setPositiveButton(R.string.dialog_ok) { dialog, id ->
+        builder?.setMessage("Delete '${product.name}'?")
+            ?.setPositiveButton(R.string.dialog_ok) { _, _ ->
                 productsViewModel.removeProduct(product)
             }
-            ?.setNegativeButton(R.string.dialog_cancel) { dialog, id ->
+            ?.setNegativeButton(R.string.dialog_cancel) { dialog, _ ->
                 product.count = 1
                 dialog.cancel()
             }

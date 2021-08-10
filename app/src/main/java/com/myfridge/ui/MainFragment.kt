@@ -1,13 +1,13 @@
 package com.myfridge.ui
 
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,6 +19,7 @@ import com.myfridge.adapter.PageAdapter
 import com.myfridge.storage.entity.Category
 import com.myfridge.storage.entity.Product
 import com.myfridge.viewModel.ProductViewModel
+import kotlinx.android.synthetic.main.dialog_add_product.*
 import kotlinx.android.synthetic.main.dialog_add_product.view.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.MainScope
@@ -30,6 +31,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private lateinit var pageAdapter: PageAdapter
     private lateinit var viewPager: ViewPager2
     private var categoriesList: ArrayList<Category> = arrayListOf()
+    private var pickedCategoryId = 0
 
     private val productsViewModel: ProductViewModel by viewModels()
 
@@ -52,6 +54,34 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         val dialog = builder.create()
         dialog.window?.setDimAmount(0.6F)
         dialog.show()
+
+        val radioGroupView = dialogView.radio_group
+        radioGroupView.orientation = RadioGroup.VERTICAL
+
+        var i = 0
+        categoriesList.stream()
+            .forEach {
+                val button = RadioButton(requireContext())
+                button.text = it.name
+                button.id = i++
+                radioGroupView.addView(button)
+            }
+
+        radioGroupView.setOnCheckedChangeListener { radioGroup, checkedId ->
+            Timber.d("checkedId: $checkedId")
+            pickedCategoryId = checkedId
+
+            dialogView.productCategoryEditText.setText(categoriesList[pickedCategoryId].name)
+
+            dialogView.productCategoryEditText.visibility = View.VISIBLE
+            dialogView.pick_category_button.visibility = View.VISIBLE
+            radioGroupView.visibility = View.GONE
+        }
+
+        dialogView.pick_category_button.setOnClickListener {
+            radioGroupView.visibility = View.VISIBLE
+            dialogView.pick_category_button.visibility = View.GONE
+        }
 
         dialogView.dialog_cancel_button.setOnClickListener {
             dialog.cancel()

@@ -61,9 +61,7 @@
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_ok">OK</string>
 
-    <!-- dialog_ confirm -->
-    <string name="dialog_confirm_text">Delete product?</string>
-
+    <string name="pick_category">Chose category</string>
     <string name="number">1</string>
 
 </resources>
