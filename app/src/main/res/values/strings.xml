@@ -61,7 +61,11 @@
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_ok">OK</string>
 
-    <string name="pick_category">Chose category</string>
+    <string name="pick_category">Choose category</string>
     <string name="number">1</string>
+
+    <!-- dialog new checklist -->
+    <string name="new_checklist">New check list</string>
+    <string name="checklist_title">Title</string>
 
 </resources>

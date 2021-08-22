@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.CheckListFragment">
+    tools:context=".ui.CheckListFragment"
+    android:padding="10dp">
 
-    <TextView
+    <ExpandableListView
+        android:id="@+id/expanded_checklist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/check_list" />
-
-</LinearLayout>
+        android:dividerHeight="3dp"
+        android:childDivider="@color/light_grey"
+        android:divider="@color/grey"
+        />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_checklist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="bottom|end"
+        app:backgroundTint="@color/purple_200"
+        android:contentDescription="@string/add_product"
+        android:src="@drawable/ic_add"
+        />
+</FrameLayout>

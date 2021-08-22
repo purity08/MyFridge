@@ -19,8 +19,10 @@ import com.myfridge.adapter.PageAdapter
 import com.myfridge.storage.entity.Category
 import com.myfridge.storage.entity.Product
 import com.myfridge.viewModel.ProductViewModel
+import kotlinx.android.synthetic.main.dialog_add_checklist.view.*
 import kotlinx.android.synthetic.main.dialog_add_product.*
 import kotlinx.android.synthetic.main.dialog_add_product.view.*
+import kotlinx.android.synthetic.main.dialog_add_product.view.dialog_cancel_button
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.async
