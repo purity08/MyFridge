@@ -24,12 +24,17 @@
         android:maxLength="15"
         android:textAlignment="center" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checklist_product_helper"
+        />
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/checkList_product_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
-        android:hint="product"
+        android:layout_marginBottom="20dp"
+        android:hint="@string/checklist_product"
         android:maxLength="15"
         android:textAlignment="center" />
 

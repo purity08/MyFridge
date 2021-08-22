@@ -67,5 +67,7 @@
     <!-- dialog new checklist -->
     <string name="new_checklist">New check list</string>
     <string name="checklist_title">Title</string>
+    <string name="checklist_product_helper">Input each product on a new line</string>
+    <string name="checklist_product">Products</string>
 
 </resources>
